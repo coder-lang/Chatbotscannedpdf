@@ -1,0 +1,36 @@
+# ================================================================
+# .env — Copy this file to .env and fill in your values
+# IMPORTANT: Variable names must match EXACTLY — do not rename them
+# ================================================================
+
+
+# ── Azure Document Intelligence ───────────────────────────────────
+DOC_INTEL_ENDPOINT=https://your-resource.cognitiveservices.azure.com/
+DOC_INTEL_KEY=your_document_intelligence_key_here
+
+
+# ── Azure OpenAI ──────────────────────────────────────────────────
+AZURE_OPENAI_ENDPOINT=https://your-openai-resource.openai.azure.com/
+AZURE_OPENAI_KEY=your_openai_key_here
+AZURE_OPENAI_API_VERSION=2024-02-01
+
+# These must match your deployment names in Azure OpenAI Studio exactly
+CHAT_DEPLOYMENT=gpt-4o
+EMBED_DEPLOYMENT=text-embedding-ada-002
+
+
+# ── Storage paths (no need to change these) ───────────────────────
+INPUT_PDF_FOLDER=input_pdfs
+OUTPUT_TXT_FILE=output_combined_txt/combined_output.txt
+CHROMA_PERSIST_DIR=chroma_store
+CHROMA_COLLECTION=gujarat_docs
+CONVERSATIONS_DIR=conversation_store
+
+
+# ── JWT secret (change to any long random string) ─────────────────
+JWT_SECRET_KEY=replace-with-a-long-random-secret-string-min-32-chars
+
+
+# ── RAG tuning ────────────────────────────────────────────────────
+VECTOR_SEARCH_TOP_K=8
+MAX_HISTORY_TURNS=10
