@@ -1,0 +1,61 @@
+# ==============================================================
+# requirements.txt — Python 3.13 compatible, fully resolved
+#
+# ROOT CAUSE OF ALL PREVIOUS ERRORS:
+#   langchain-openai 1.1.9 needs langchain-core >= 1.2.11
+#   langchain 0.3.x        needs langchain-core <  1.0.0
+#   These CANNOT coexist. Solution: use langchain-openai 0.2.x
+#
+# CLEAN INSTALL:
+#   pip uninstall langchain langchain-core langchain-openai langchain-community langchain-text-splitters langsmith chromadb openai httpx pydantic fastapi uvicorn tiktoken -y
+#   pip install -r requirements.txt
+#   pip check
+# ==============================================================
+
+
+# ── Web framework ──────────────────────────────────────────────
+fastapi>=0.115.0
+uvicorn[standard]>=0.29.0
+
+
+# ── Azure SDKs ─────────────────────────────────────────────────
+azure-ai-documentintelligence==1.0.0b4
+azure-core>=1.30.0
+
+
+# ── OpenAI ─────────────────────────────────────────────────────
+# Must stay < 2.0 — langchain-openai 0.2.x requires openai>=1.26.0,<2.0.0
+openai>=1.26.0,<2.0.0
+httpx>=0.27.0,<0.28.0
+
+
+# ── Pydantic ───────────────────────────────────────────────────
+pydantic>=2.7.4,<3.0.0
+
+
+# ── LangChain stack ─────────────────────────────────────────────
+# langchain-openai 0.2.x  → requires langchain-core >= 0.3.x, < 1.0.0  ✅ compatible
+# langchain-openai 1.1.9  → requires langchain-core >= 1.2.11           ❌ breaks langchain 0.3.x
+#
+# DO NOT upgrade langchain-openai beyond 0.2.x unless you also
+# upgrade langchain and langchain-community to 1.x (not stable yet)
+langchain==0.3.25
+langchain-core>=0.3.51,<1.0.0
+langchain-openai==0.2.14
+langchain-community==0.3.23
+langchain-text-splitters==0.3.8
+
+
+# ── Vector store ────────────────────────────────────────────────
+chromadb>=0.5.0
+
+
+# ── Auth ────────────────────────────────────────────────────────
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+
+
+# ── Utilities ───────────────────────────────────────────────────
+python-dotenv>=1.0.0
+regex>=2024.4.28
+tiktoken>=0.7.0
