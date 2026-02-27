@@ -1,0 +1,1 @@
+pip uninstall langchain langchain-core langchain-openai langchain-community langchain-text-splitters langsmith chromadb openai httpx pydantic fastapi uvicorn -y
